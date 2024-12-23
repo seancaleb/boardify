@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 16.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 16.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 16.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+
+    --skeleton-base: 240 5.9% 90%;
+    --skeleton-highlight: 240 4.9% 83.9%;
+    --primary-indigo: 234, 89%, 74%;
+
+    /* Font Sizes  */
+    --text-xs: clamp(0.625rem, 0.446vw + 0.536rem, 0.75rem);
+    --text-sm: clamp(0.75rem, 0.446vw + 0.661rem, 0.875rem);
+    --text-base: clamp(0.875rem, 0.446vw + 0.786rem, 1rem);
+    --text-lg: clamp(1rem, 0.446vw + 0.911rem, 1.125rem);
+    --text-xl: clamp(1.125rem, 0.446vw + 1.036rem, 1.25rem);
+    --text-2xl: clamp(1.25rem, 0.893vw + 1.071rem, 1.5rem);
+    --text-3xl: clamp(1.5rem, 1.339vw + 1.232rem, 1.875rem);
+    --text-4xl: clamp(1.875rem, 1.339vw + 1.607rem, 2.25rem);
+    --text-5xl: clamp(2.25rem, 2.679vw + 1.714rem, 3rem);
+    --text-6xl: clamp(3rem, 2.679vw + 2.464rem, 3.75rem);
+    --text-7xl: clamp(3.75rem, 2.679vw + 3.214rem, 4.5rem);
+    --text-8xl: clamp(4.5rem, 5.357vw + 3.429rem, 6rem);
+    --text-9xl: clamp(6rem, 7.143vw + 4.571rem, 8rem);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+
+    --skeleton-base: 240 5.9% 10%;
+    --skeleton-highlight: 240 3.7% 15.9%;
+    --primary-indigo: 239, 84%, 67%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  [data-radix-popper-content-wrapper] {
+    @apply right-0 sm:right-full px-5;
+  }
+
+  /* shadcn/ui typography styles  */
+  h1 {
+    @apply scroll-m-20 text-3xl sm:text-4xl font-semibold tracking-[-.015em];
+  }
+  h2 {
+    @apply scroll-m-20 text-2xl sm:text-3xl font-semibold tracking-[-.015em] first:mt-0;
+  }
+  h3 {
+    @apply scroll-m-20 text-xl sm:text-2xl font-semibold tracking-[-.015em];
+  }
+  h4 {
+    @apply scroll-m-20 text-lg sm:text-xl font-semibold tracking-[-.015em];
+  }
+  p {
+    @apply leading-7;
+  }
+  blockquote {
+    @apply mt-6 border-l-2 pl-6 italic;
+  }
+  code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+  }
+  th {
+    @apply whitespace-nowrap;
+  }
+}
+
+@layer utilities {
+  .icon {
+    @apply h-4 w-4;
+  }
+  .icon-btn {
+    @apply icon text-foreground opacity-70;
+  }
+  .icon-start {
+    @apply icon-btn mr-1;
+  }
+  .icon-end {
+    @apply icon-btn ml-1;
+  }
+  .icon-start-btn {
+    @apply mr-1 h-4 w-4;
+  }
+  .icon-end-btn {
+    @apply ml-1 h-4 w-4;
+  }
+  .link {
+    @apply small flex items-center text-muted-foreground hover:text-primary transition duration-150 whitespace-nowrap;
+  }
+  /* shadcn/ui typography utilities  */
+  .lead {
+    @apply text-xl text-muted-foreground;
+  }
+  .large {
+    @apply text-lg font-semibold tracking-[-.015em];
+  }
+  .small {
+    @apply text-sm font-medium leading-none;
+  }
+  .muted {
+    @apply text-sm text-muted-foreground;
+  }
+}
+
+th,
+td {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: -100%;
+}
+
+input[type="file"]::-ms-browse {
+  display: none;
+}
