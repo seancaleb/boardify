@@ -3,6 +3,10 @@ import tailwindAnimate from "tailwindcss-animate";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
+  important: true,
+  purge: {
+    content: ["./src/**/*.{ts,tsx,js,jsx}"],
+  },
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
