@@ -3,7 +3,9 @@ import { axios } from "@/lib/axios";
 import { userKeys } from "@/lib/react-query";
 import { useAppStore } from "@/stores";
 import { disableInteractions } from "@/utils/disable-interactions";
+import { toastMessageFormatter } from "@/utils/toast-message-formatter";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { DeletedBoardResponse } from "../schema";
 
 type MutationFnParams = {
@@ -20,7 +22,7 @@ export const useDeleteBoard = () => {
 
   return useMutation({
     mutationFn: ({ boardId }: MutationFnParams) => deleteBoard(boardId),
-    onSettled: async () => {
+    onSettled: async (data, error) => {
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: userKeys.boards(auth.userId!),
@@ -32,6 +34,16 @@ export const useDeleteBoard = () => {
       ]);
 
       disableInteractions(false);
+
+      if (error) {
+        const { title, description } = toastMessageFormatter(error.message);
+        toast.success(title, { description });
+      }
+
+      if (data) {
+        const { title, description } = toastMessageFormatter(data.message);
+        toast.success(title, { description });
+      }
     },
   });
 };

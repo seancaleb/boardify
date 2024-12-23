@@ -16,12 +16,10 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { toastMessageFormatter } from "@/utils/toast-message-formatter";
 import { Clipboard, Folder, MoreHorizontal, Trash2 } from "lucide-react";
 import { useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
-import { toast } from "sonner";
 import { useDeleteBoard } from "../api/use-delete-board";
 import { useGetAllBoards } from "../api/use-get-all-boards";
 import { UpdateBoardForm } from "../components/form/update-board-form";
@@ -74,24 +72,7 @@ const DropdownAction = ({ board }: { board: Board }) => {
   const handleSetIsOpenEdit = (value: boolean) => setIsOpenEdit(value);
 
   const handleCloseAlert = () => {
-    deleteBoardMutation.mutate(
-      { boardId: board.boardId },
-      {
-        onSuccess: ({ message }) => {
-          const { title, description } = toastMessageFormatter(message);
-          toast.success(title, { description });
-        },
-        onError: ({ message }) => {
-          const { title, description } = toastMessageFormatter(message);
-          toast.error(title, {
-            description,
-          });
-        },
-        onSettled: () => {
-          setIsOpenAlert(false);
-        },
-      }
-    );
+    deleteBoardMutation.mutate({ boardId: board.boardId });
   };
 
   return (
