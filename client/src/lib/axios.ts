@@ -13,7 +13,9 @@ export const axios = Axios.create({
 const requestInterceptor = async (config: InternalAxiosRequestConfig) => {
   config.headers.Accept = "application/json";
 
-  await sleep(450);
+  if (IS_DEVELOPMENT) {
+    await sleep(450);
+  }
 
   return config;
 };
