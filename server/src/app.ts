@@ -24,7 +24,6 @@ const app = express();
 const PORT = config.get<number>("PORT");
 const DEV_URL = config.get<string>("devUrl");
 const PROD_TEST_URL = config.get<string>("prodTestUrl");
-const MONGO_PATH = config.get<string>("mongoPath");
 
 // Middlewares
 app.use(
